@@ -11,4 +11,4 @@ source "../_variables.source"
 
 TAG=$1
 set -x
-docker push "${MAIN_IMAGE_REPOSITORY}/os2display-admin-release:${TAG}"
+docker push "${PROJECT_IMAGE_REPOSITORY}/os2display-admin-release:${TAG}"
