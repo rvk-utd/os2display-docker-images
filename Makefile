@@ -15,8 +15,9 @@ help: ## Display a list of the public targets
 # targets), then strip the hash and print.
 	@grep -E -h "^\w.*:.*##" $(MAKEFILE_LIST) | sed -e 's/\(.*\):.*##\(.*\)/\1	\2/'
 
-build-infra-images: ## Build docker-images.
-	images/build-infra-images.sh
+# We attempt to stick with the reload infra images for now.
+# build-infra-images: ## Build docker-images.
+# 	images/build-infra-images.sh
 
 build-release-image: ## Build a release and tag it by TAG
 	images/build-release-image.sh $(ADMIN_RELEASE_TAG)
@@ -24,7 +25,8 @@ build-release-image: ## Build a release and tag it by TAG
 push-release-image: ## Push a release specified by TAG
 	images/push-release-image.sh $(ADMIN_RELEASE_TAG)
 
-push-infra-images: ## Push docker-images.
-	images/push-infra-images.sh
+# We attempt to stick with the reload infra images for now.
+# push-infra-images: ## Push docker-images.
+# 	images/push-infra-images.sh
 
 .PHONY: help build-infra-images build-release-image push-release-image push-infra-images
