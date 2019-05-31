@@ -1,5 +1,7 @@
 # Various variables used during build and local docker-supported development.
-MAIN_IMAGE_REPOSITORY=eu.gcr.io/os2display-bbs/os2display-bbs
+MAIN_IMAGE_REPOSITORY=reload
+# Project specific images
+PROJECT_IMAGE_REPOSITORY=reload
 MAIN_BASE_IMAGE=gcr.io/gcp-runtimes/ubuntu_18_0_4:latest
 
 DOCKER_BASE_DOMAIN=bbs-os2display.docker
