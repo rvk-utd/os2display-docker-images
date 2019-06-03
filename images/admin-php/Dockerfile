@@ -7,7 +7,7 @@ ARG os2display_image_repository=os2display
 FROM ${os2display_image_repository}/os2display-php-base:latest
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      php5.6-fpm \
+      php7.2-fpm \
     && \
     curl -Lo /tmp/jobber_1.4.0-pr.1-1_amd64_ubuntu16.deb https://github.com/dshearer/jobber/releases/download/v1.4.0-pr.1/jobber_1.4.0-pr.1-1_amd64_ubuntu16.deb && \
     dpkg -i /tmp/jobber_1.4.0-pr.1-1_amd64_ubuntu16.deb && \
@@ -30,8 +30,8 @@ RUN test -d /run/php || mkdir /run/php
 COPY files/.jobber /root/
 RUN chmod a-rwx /root/.jobber && chmod u+rw /root/.jobber
 
-COPY config/www.conf /etc/php/5.6/fpm/pool.d/
-COPY config/php-fpm.conf /etc/php/5.6/fpm/
+COPY config/www.conf /etc/php/7.2/fpm/pool.d/
+COPY config/php-fpm.conf /etc/php/7.2/fpm/
 
 COPY files/etc/ /etc/
 COPY files/bin/ /usr/local/bin/
