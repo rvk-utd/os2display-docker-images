@@ -3,19 +3,15 @@ ARG os2display_image_repository=os2display
 FROM ${os2display_image_repository}/os2display-docker-base
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends software-properties-common && \
-    LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
-    apt-get update && \
     apt-get install -y --no-install-recommends \
-      php5.6-cli \
-      php5.6-xdebug \
-      php5.6-mysql \
-      php5.6-curl \
-      php5.6-mbstring \
-      php5.6-mcrypt \
-      php5.6-gd \
-      php5.6-xml \
-      php5.6-zip \
+      php7.2-cli \
+      php7.2-xdebug \
+      php7.2-mysql \
+      php7.2-curl \
+      php7.2-mbstring \
+      php7.2-gd \
+      php7.2-xml \
+      php7.2-zip \
       imagemagick \
       git \
       patch \

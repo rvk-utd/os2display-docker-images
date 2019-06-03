@@ -39,12 +39,12 @@ ADMIN_PASS="$3"
 SEARCH_APIKEY="$4"
 ADMIN_SEARCH_INDEX_ID="$5"
 
-gosu www-data app/console doctrine:migrations:migrate --no-interaction
-gosu www-data app/console os2display:core:templates:load
-gosu www-data app/console doctrine:query:sql "UPDATE ik_screen_templates SET enabled=1;"
-gosu www-data app/console doctrine:query:sql "UPDATE ik_slide_templates SET enabled=1;"
+gosu www-data bin/console doctrine:migrations:migrate --no-interaction
+gosu www-data bin/console os2display:core:templates:load
+gosu www-data bin/console doctrine:query:sql "UPDATE ik_screen_templates SET enabled=1;"
+gosu www-data bin/console doctrine:query:sql "UPDATE ik_slide_templates SET enabled=1;"
 
-app/console fos:user:create "${ADMIN_USER}" "${ADMIN_EMAIL}" "${ADMIN_PASS}" --super-admin || true
+bin/console fos:user:create "${ADMIN_USER}" "${ADMIN_EMAIL}" "${ADMIN_PASS}" --super-admin || true
 
 # Authenticate to get a token we can use to subsequent call.
 JSON_RESULT=$(curl -s "http://search:3010/authenticate" -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data @<(cat <<EOF
