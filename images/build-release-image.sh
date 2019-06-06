@@ -14,6 +14,14 @@ fi
 TAG=$1
 
 cd "${SCRIPT_DIR}"
+
+docker build \
+ -t ${MAIN_IMAGE_REPOSITORY}/os2display-php-base:latest \
+ -f php-base/Dockerfile \
+ --no-cache \
+ --build-arg os2display_image_repository="${MAIN_IMAGE_REPOSITORY}" \
+ php-base
+
 docker build \
  -t "${PROJECT_IMAGE_REPOSITORY}/os2display-admin-release:${TAG}" \
  --no-cache \
